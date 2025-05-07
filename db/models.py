@@ -6,7 +6,7 @@ from django.db import models
 
 class Race(models.Model):
     name = models.CharField(max_length=255)
-    description = models.TextField(blank=True)
+    description = models.TextField(null=True, blank=True)
 
 
 class Skill(models.Model):
@@ -22,7 +22,7 @@ class Guild (models.Model):
 
 class Player(models.Model):
     nickname = models.CharField(max_length=255, unique=True)
-    email = models.EmailField(max_length=255)
+    email = models.EmailField(max_length=255, null=True, unique=True)
     bio = models.CharField(max_length=255, null=True, blank=True)
     race = models.ForeignKey(Race, on_delete=models.CASCADE)
     guild = models.ForeignKey(
